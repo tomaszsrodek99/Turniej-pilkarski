@@ -1,0 +1,84 @@
+﻿.navbar {
+    width: 100%;
+    border-bottom: 2px solid black;
+    overflow: hidden;
+    position: relative;
+    background: rgba(18,25,41,0.65);
+}
+.navbar-brand {
+    color: white;
+    font-size: 20px;
+}
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+body {
+    background: url(http://www.footroll.pl/i/bg-site-top.jpg) center top no-repeat;
+}
+.navbar-nav {
+    clear: left;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: 50%;
+    text-align: center;
+}
+.navbar-nav .nav-item {
+    display: block;
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    right: 50%;
+}
+
+    .navbar-nav .nav-link {
+        display: block;
+        margin: 0 0 0 15px;
+        padding: 3px 10px;
+        color: white;
+        text-decoration: none;
+        line-height: 20px;
+        font-size: 18px;
+    }
+
+.nav-link:hover {
+    color: lightgreen;
+    cursor: pointer;
+}
+
+.my-table {
+    background: rgba(18,25,41,0.95);
+    color: white;
+    border: 2px solid black;
+    box-shadow: 14px 15px 17px 1px rgba(0, 0, 0, 1);
+}
+
+.search-bar {
+    background: url(search-icon.jpg) no-repeat left center;
+    background-size: 22px;
+    padding: 2px 2px 2px 30px;
+    background-color: white;
+    margin-bottom: 15px;
+    border-radius:7px;
+}
+
+.active {
+    color: lightgreen!important;
+}
+
+.disable {
+    color: red;
+}
+.back {
+    margin-right:15px;
+}
+.addButton {
+    margin-right: 15px;
+}
+
+

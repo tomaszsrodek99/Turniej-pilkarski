@@ -1,0 +1,37 @@
+﻿@using Football.Entities
+@{
+    ViewBag.Title = "Home Page";
+    @model List<Country>
+}
+<h2 style="color: black;">Lista drużyn biorących udział w turnieju</h2>
+<input class="search-bar" type="text" id="myInput" onkeyup="searchCountryByName()" placeholder="Wyszukaj..">
+<a href="@Url.Action("AddClub", "Country")" id="addCountryButton" class="btn btn-primary">Dodaj drużynę</a>
+<table id="searchTable" class="sortable table my-table">
+    <thead>
+        <tr>
+            <th>Nr.</th>
+            <th>Kraj</th>
+            <th>Trener</th>
+            <th>Grupa</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var (team, index) in Model.Select((item, index) => (item, index)))
+        {
+            <tr>
+                <td>@(index + 1)</td>
+                <td>@team.CountryName</td>
+                <td>@team.Coach.Firstname @team.Coach.Lastname</td>
+                <td>@team.Grupa</td>
+                <td>
+                    @Html.ActionLink("Szczegóły", "Details", new { id = team.CountryID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
