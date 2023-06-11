@@ -16,6 +16,43 @@ namespace Football.Controllers
             _context = context;
         }
 
+        public IActionResult AddPlayer(int countryId)
+        {
+            ViewData["CountryId"] = countryId;
+            return View("CreatePlayerForm");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePlayer(Player player)
+        {
+            if (player.Club == null)
+                player.Club = "-";
+            //var errors = ModelState.Values.SelectMany(v => v.Errors).ToList();
+            //var error = errors[0]; 
+            if (ModelState.IsValid)
+            {
+                _context.Players.Add(player);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Details", "Home", new { countryId = player.CountryID });
+        }
+
+        public async Task<IActionResult> DeletePlayer(int playerId)
+        {
+            var player = await _context.Players.FindAsync(playerId);
+
+            _context.Players.Remove(player);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", "Home", new { countryId = player.CountryID });
+        }
+
+        public async Task<IActionResult> EditPlayer(int playerId)
+        {
+            var currentPlayer = await _context.Players.FindAsync(playerId);
+            return View("EditPlayerForm", currentPlayer);
+        }
+        [HttpPost]
         public async Task<IActionResult> SavePlayer(Player player)
         {
             if (ModelState.IsValid)
@@ -23,26 +60,15 @@ namespace Football.Controllers
                 if (player.Club == null)
                     player.Club = "-";
 
-                _context.Players.Add(player);
+                _context.Players.Update(player);
                 await _context.SaveChangesAsync();
 
-            }
-            
-            return RedirectToAction("Details", "Home", new { id = player.CountryID });
-        }
+                return RedirectToAction("Details", "Home", new { countryId = player.CountryID });
 
-        public async Task<IActionResult> DeletePlayer(int id)
-        {
-            var player = await _context.Players.FindAsync(id);
-            if (player == null)
-            {
-                return NotFound();
             }
 
-            _context.Players.Remove(player);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Details", "Home", new { id = player.CountryID });
+            // Jeśli walidacja nie powiodła się, ponownie wyświetlamy formularz z błędami
+            return RedirectToAction("EditPlayer", player.PlayerID);
         }
 
     }

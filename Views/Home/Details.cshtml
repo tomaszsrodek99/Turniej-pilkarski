@@ -1,48 +1,13 @@
 ﻿@model Football.Entities.Player
-
-<h2 style="color: black;">@ViewData["Title"]</h2>
-<a href="#" id="addPlayerButton" class="btn btn-primary" onclick="savePlayerForm()">Dodaj zawodnika</a>
-
-<div id="playerFormContainer">
-    <form id="playerForm" method="post" action="/Home/SavePlayer" class="my-form">
-        <input type="hidden" name="countryId" value="@ViewData["CountryId"]" asp-for="CountryID" />
-        <div class="form-group">
-            <label for="playerFullName">Imię i nazwisko:</label>
-            <input type="text" id="playerFullName" name="PlayerFullName" class="form-control" asp-for="PlayerFullName" />
-            <span asp-validation-for="PlayerFullName" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label for="position">Pozycja:</label>
-            <select id="position" name="position" class="form-control" data-val="true" asp-for="Position">
-                @foreach (var position in Enum.GetValues(typeof(Football.Entities.PositionType)))
-                {
-                    <option value="@position">@position</option>
-                }
-            </select>
-            <span asp-validation-for="Position" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label for="age">Wiek:</label>
-            <input type="number" id="age" name="age" class="form-control" asp-for="Age" min="15" />
-            <span asp-validation-for="Age" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label for="club">Klub:</label>
-            <input type="text" id="club" name="club" class="form-control" asp-for="Club" />
-            <span asp-validation-for="Club" class="text-danger"></span>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Dodaj</button>
-        <button type="button" class="btn btn-secondary" onclick="cancelForm()">Anuluj</button>
-    </form>
-</div>
+@using Football.Models
+<h2 class="text-white">@ViewData["Title"]</h2>
+<button type="button" class="btn btn-secondary" onclick="goBack()">Wstecz</button>
+<a href="@Url.Action("AddPlayer", "Player", new { countryId = ViewData["CountryId"] })" id="addPlayerButton" class="btn btn-primary">Dodaj zawodnika</a>
 
 
-@if (ViewData["Players"] != null)
+@if (ViewData["Players"] != null && ((List<Football.Entities.Player>)ViewData["Players"]).Any())
 {
+    var number = 1;
     <table id="countryTable" class="sortable table my-table">
         <thead>
             <tr>
@@ -57,7 +22,6 @@
         <tbody>
             @foreach (var player in (List<Football.Entities.Player>)ViewData["Players"])
             {
-                var number = 1;
                 <tr>
                     <td>@(number)</td>
                     <td>@player.PlayerFullName</td>
@@ -65,8 +29,8 @@
                     <td>@player.Age</td>
                     <td>@player.Club</td>
                     <td>
-                        @Html.ActionLink("Edytuj", "EditPlayer", "Player", new { id = player.PlayerID }, null) |
-                        @Html.ActionLink("Usuń", "DeletePlayer", "Player", new { id = player.PlayerID }, new { onclick = "return confirm('Czy na pewno chcesz usunąć zawodnika?');" })
+                        @Html.ActionLink("Edytuj", "EditPlayer", "Player", new { playerId = player.PlayerID }, null) |
+                        @Html.ActionLink("Usuń", "DeletePlayer", "Player", new { playerId = player.PlayerID }, new { onclick = "return confirm('Czy na pewno chcesz usunąć zawodnika?');" })
                     </td>
                 </tr>
                 number++;
@@ -77,19 +41,5 @@
 }
 else
 {
-    <p>Brak zawodników dla tego kraju.</p>
+    <p class="text-white">Brak zawodników dla tego kraju. Dodaj pierwszego zawodnika.</p>
 }
-
-<script>
-    function savePlayerForm() {
-        document.getElementById('addPlayerButton').style.visibility = 'hidden';
-        document.getElementById('playerFormContainer').style.display = 'block';
-    }
-</script>
-
-<script>
-    function cancelForm() {
-        document.getElementById('addPlayerButton').style.visibility = 'visible';
-        document.getElementById('playerFormContainer').style.display = 'none';
-    }
-</script>

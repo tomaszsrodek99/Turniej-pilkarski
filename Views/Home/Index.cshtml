@@ -3,7 +3,7 @@
     ViewBag.Title = "Home Page";
     @model List<Country>
 }
-<h2 style="color: black;">Lista drużyn biorących udział w turnieju</h2>
+<h2 class="text-white">Lista drużyn biorących udział w turnieju</h2>
 <input class="search-bar" type="text" id="myInput" onkeyup="searchCountryByName()" placeholder="Wyszukaj..">
 <a href="@Url.Action("AddClub", "Country")" id="addCountryButton" class="btn btn-primary">Dodaj drużynę</a>
 <table id="searchTable" class="sortable table my-table">
@@ -25,7 +25,9 @@
                 <td>@team.Coach.Firstname @team.Coach.Lastname</td>
                 <td>@team.Grupa</td>
                 <td>
-                    @Html.ActionLink("Szczegóły", "Details", new { id = team.CountryID })
+                    @Html.ActionLink("Szczegóły", "Details", new { countryId = team.CountryID }) |
+                    @Html.ActionLink("Edytuj", "EditClub", "Country", new { countryId = team.CountryID }, null) |
+                    @Html.ActionLink("Usuń", "DeleteClub", "Country", new { countryId = team.CountryID }, new { onclick = "return confirm('Czy na pewno chcesz usunąć drużynę?');" })
                 </td>
             </tr>
         }

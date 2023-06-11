@@ -1,0 +1,46 @@
+﻿@model Football.Entities.Player
+
+@{
+    ViewData["Title"] = "Create player";
+}
+<form id="playerForm" method="post" action="/Player/CreatePlayer" class="my-form">
+    <input type="hidden" name="CountryID" value="@ViewData["CountryId"]" />
+    <div class="form-group">
+        <label for="PlayerFullName">Imię i nazwisko:</label>
+        <input type="text" id="PlayerFullName" name="PlayerFullName" class="form-control" asp-for="PlayerFullName" />
+        <span asp-validation-for="PlayerFullName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Position">Pozycja:</label>
+        <select id="Position" name="Position" class="form-control" asp-for="Position">
+            @foreach (var position in Enum.GetValues(typeof(Football.Entities.PositionType)))
+            {
+                <option value="@position">@position</option>
+            }
+        </select>
+        <span asp-validation-for="Position" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Age">Wiek:</label>
+        <input type="number" id="Age" name="Age" class="form-control" asp-for="Age" min="15" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Club">Klub:</label>
+        <input type="text" id="Club" name="Club" class="form-control" asp-for="Club" />
+        <span asp-validation-for="Club" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <div class="btn-group">
+            <button style="margin-right: 15px" type="button" class="btn btn-secondary" onclick="goBack()">Wstecz</button>
+            <button type="submit" class="btn btn-primary">Dodaj</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -5,10 +5,12 @@
     position: relative;
     background: rgba(18,25,41,0.65);
 }
+
 .navbar-brand {
     color: white;
     font-size: 20px;
 }
+
 .box-shadow {
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
@@ -16,6 +18,7 @@
 body {
     background: url(http://www.footroll.pl/i/bg-site-top.jpg) center top no-repeat;
 }
+
 .navbar-nav {
     clear: left;
     float: left;
@@ -26,15 +29,16 @@ body {
     left: 50%;
     text-align: center;
 }
-.navbar-nav .nav-item {
-    display: block;
-    float: left;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    right: 50%;
-}
+
+    .navbar-nav .nav-item {
+        display: block;
+        float: left;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        right: 50%;
+    }
 
     .navbar-nav .nav-link {
         display: block;
@@ -64,21 +68,21 @@ body {
     padding: 2px 2px 2px 30px;
     background-color: white;
     margin-bottom: 15px;
-    border-radius:7px;
+    border-radius: 7px;
 }
 
 .active {
-    color: lightgreen!important;
+    color: lightgreen !important;
 }
 
 .disable {
     color: red;
 }
+
 .back {
-    margin-right:15px;
-}
-.addButton {
     margin-right: 15px;
 }
 
-
+.addButton {
+    margin-right: 15px;
+}

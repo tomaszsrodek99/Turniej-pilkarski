@@ -39,3 +39,13 @@ function goBack() {
     history.back();
 }
 
+function createPlayerForm() {
+    document.getElementById('addPlayerButton').style.visibility = 'hidden';
+    document.getElementById('playerFormContainer').style.display = 'block';
+}
+
+function cancelForm() {
+    document.getElementById('addPlayerButton').style.visibility = 'visible';
+    document.getElementById('playerFormContainer').style.display = 'none';
+}
+

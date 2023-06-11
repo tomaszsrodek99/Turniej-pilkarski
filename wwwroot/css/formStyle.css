@@ -14,31 +14,30 @@
 }
 
 .my-form label {
-    font-weight: bold;
+   font-weight: bold;
 }
 
-.my-form input[type="text"],
-.my-form input[type="number"],
-.my-form select {
-    width: 100%;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-}
+    .my-form input[type="text"],
+    .my-form input[type="number"],
+    .my-form select {
+        width: 100%;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
 
-.my-form button[type="submit"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-weight: bold;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-}
+    .my-form button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-weight: bold;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
 
-        .my-form button[type="submit"]:hover {
+   .my-form button[type="submit"]:hover {
             background-color: #0069d9;
         }
-

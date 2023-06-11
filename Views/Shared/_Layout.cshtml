@@ -20,7 +20,8 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="@((ViewContext.RouteData.Values["controller"] as string == "Home") ? "active" : "") nav-link" href="/Home/Index">Home</a>
+                    <a class="@((ViewContext.RouteData.Values["controller"] as string == "Home" || ViewContext.RouteData.Values["controller"] as string == "Country" ||
+                        ViewContext.RouteData.Values["controller"] as string == "Player") ? "active" : "") nav-link" href="/Home/Index">Strona główna</a>
                 </li>
                 <li class="nav-item">
                     <a class="@((ViewContext.RouteData.Values["controller"] as string == "Group") ? "active" : "") nav-link" href="/Group/Index">Grupy</a>
@@ -29,10 +30,10 @@
                     <a class="@((ViewContext.RouteData.Values["controller"] as string == "Match") ? "active" : "") nav-link" href="/Match/Index">Mecze</a>
                 </li>
                 <li class="nav-item">
-                    <a class="@((ViewContext.RouteData.Values["controller"] as string == "Player") ? "active" : "") nav-link disable" href="/Player/Index">Strzelcy</a>
+                    <a class="@((ViewContext.RouteData.Values["controller"] as string == "Match") ? "active" : "") nav-link disable" href="/Match/Tournament">Drabinka turniejowa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="@((ViewContext.RouteData.Values["controller"] as string == "Match") ? "active" : "") nav-link disable" href="/Match/Tournament">Drabinka turniejowa</a>
+                    <a class="@((ViewContext.RouteData.Values["controller"] as string == "Player") ? "active" : "") nav-link disable" href="/Player/Index">Strzelcy</a>
                 </li>
             </ul>
         </div>

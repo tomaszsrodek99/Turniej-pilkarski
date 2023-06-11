@@ -1,14 +1,15 @@
 ﻿@model Football.Entities.Country
 
 @{
-    ViewData["Title"] = "Create club";
+    ViewData["Title"] = "Edit club";
 }
 
 <div class="text-center">
-    <h2 class="text-white">Dodaj drużynę</h2>
-    <form asp-action="CreateClub" asp-controller="Country" method="post" class="my-form">
+    <h2 class="text-white">Edytuj klub</h2>
+    <form asp-action="SaveClub" asp-controller="Country" method="post" class="my-form">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" name="coachId" value="@ViewData["CoachId"]" asp-for="CoachID" />
+        <input type="hidden" name="CountryID" value="@Model.CountryID" asp-for="CountryID" />
+        <input type="hidden" name="CoachID" value="@Model.CoachID" asp-for="CoachID" />
         <div class="form-group">
             <label asp-for="CountryName" class="control-label"></label>
             <input asp-for="CountryName" class="form-control" />
@@ -24,6 +25,16 @@
                 }
             </select>
             <span asp-validation-for="Grupa" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Coach.Firstname" class="control-label"></label>
+            <input asp-for="Coach.Firstname" class="form-control" />
+            <span asp-validation-for="Coach.Firstname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Coach.Lastname" class="control-label"></label>
+            <input asp-for="Coach.Lastname" class="form-control" />
+            <span asp-validation-for="Coach.Lastname" class="text-danger"></span>
         </div>
         <div class="form-group">
             <div class="btn-group">
