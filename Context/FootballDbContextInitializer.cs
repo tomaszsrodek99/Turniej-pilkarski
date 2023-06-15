@@ -35,9 +35,9 @@ namespace Football.Context
                 var countries = new List<Country>
         {
             new Country { CoachID = 1, CountryName = "France", Grupa = "A" },
-            new Country { CoachID = 2, CountryName = "Romania", Grupa = "A" },
+            new Country { CoachID = 2, CountryName = "Romania", Grupa = "B" },
             new Country { CoachID = 3, CountryName = "Albania", Grupa = "A" },
-            new Country { CoachID = 4, CountryName = "Switzerland", Grupa = "A" }
+            new Country { CoachID = 4, CountryName = "Switzerland", Grupa = "B" }
         };
                 context.Countries.AddRange(countries);
                 context.SaveChanges();

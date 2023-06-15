@@ -1,5 +1,5 @@
 ﻿.my-form {
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f8f9fa;
@@ -9,13 +9,13 @@
     margin-top: 5px;
 }
 
-.my-form .form-group {
-    margin-bottom: 15px;
-}
+    .my-form .form-group {
+        margin-bottom: 15px;
+    }
 
-.my-form label {
-   font-weight: bold;
-}
+    .my-form label {
+        font-weight: bold;
+    }
 
     .my-form input[type="text"],
     .my-form input[type="number"],
@@ -23,6 +23,7 @@
         width: 100%;
         border: 1px solid #ced4da;
         border-radius: 5px;
+        padding: 10px;
     }
 
     .my-form button[type="submit"] {
@@ -38,6 +39,6 @@
         cursor: pointer;
     }
 
-   .my-form button[type="submit"]:hover {
+        .my-form button[type="submit"]:hover {
             background-color: #0069d9;
         }

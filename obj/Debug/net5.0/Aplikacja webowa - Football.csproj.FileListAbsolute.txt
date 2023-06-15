@@ -55,12 +55,8 @@ F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Deb
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Aplikacja webowa - Football.TagHelpers.input.cache
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Aplikacja webowa - Football.TagHelpers.output.cache
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Aplikacja webowa - Football.RazorCoreGenerate.cache
-F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Error.cshtml.g.cs
-F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Group\Index.cshtml.g.cs
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Index.cshtml.g.cs
-F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Privacy.cshtml.g.cs
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
@@ -152,3 +148,8 @@ F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Deb
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Country\EditClubForm.cshtml.g.cs
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Player\CreatePlayerForm.cshtml.g.cs
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Player\EditPlayerForm.cshtml.g.cs
+F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Home\GroupView.cshtml.g.cs
+F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Match\MatchView.cshtml.g.cs
+F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Match\CreateMatchForm.cshtml.g.cs
+F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Match\CreateMatchForm - kopiować.cshtml.g.cs

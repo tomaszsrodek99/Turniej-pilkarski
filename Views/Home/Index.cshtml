@@ -20,7 +20,7 @@
         @foreach (var (team, index) in Model.Select((item, index) => (item, index)))
         {
             <tr>
-                <td>@(index + 1)</td>
+                <td>@(index + 1).</td>
                 <td>@team.CountryName</td>
                 <td>@team.Coach.Firstname @team.Coach.Lastname</td>
                 <td>@team.Grupa</td>

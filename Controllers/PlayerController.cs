@@ -25,51 +25,81 @@ namespace Football.Controllers
         [HttpPost]
         public async Task<IActionResult> CreatePlayer(Player player)
         {
-            if (player.Club == null)
-                player.Club = "-";
-            //var errors = ModelState.Values.SelectMany(v => v.Errors).ToList();
-            //var error = errors[0]; 
-            if (ModelState.IsValid)
+            try
             {
-                _context.Players.Add(player);
-                await _context.SaveChangesAsync();
+                if (player.Club == null)
+                    player.Club = "-";
+                //var errors = ModelState.Values.SelectMany(v => v.Errors).ToList();
+                //var error = errors[0]; 
+                if (ModelState.IsValid)
+                {
+                    _context.Players.Add(player);
+                    await _context.SaveChangesAsync();
+                }
+                return RedirectToAction("Details", "Home", new { countryId = player.CountryID });
             }
-            return RedirectToAction("Details", "Home", new { countryId = player.CountryID });
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                return View("Error");
+            }
         }
 
         public async Task<IActionResult> DeletePlayer(int playerId)
         {
-            var player = await _context.Players.FindAsync(playerId);
+            try
+            {
+                var player = await _context.Players.FindAsync(playerId);
 
-            _context.Players.Remove(player);
-            await _context.SaveChangesAsync();
+                _context.Players.Remove(player);
+                await _context.SaveChangesAsync();
 
-            return RedirectToAction("Details", "Home", new { countryId = player.CountryID });
+                return RedirectToAction("Details", "Home", new { countryId = player.CountryID });
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                return View("Error");
+            }
         }
 
         public async Task<IActionResult> EditPlayer(int playerId)
         {
-            var currentPlayer = await _context.Players.FindAsync(playerId);
-            return View("EditPlayerForm", currentPlayer);
+            try
+            {
+                var currentPlayer = await _context.Players.FindAsync(playerId);
+                return View("EditPlayerForm", currentPlayer);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                return View("Error");
+            }
         }
         [HttpPost]
         public async Task<IActionResult> SavePlayer(Player player)
         {
-            if (ModelState.IsValid)
-            {
-                if (player.Club == null)
-                    player.Club = "-";
+            try {
+                if (ModelState.IsValid)
+                {
+                    if (player.Club == null)
+                        player.Club = "-";
 
-                _context.Players.Update(player);
-                await _context.SaveChangesAsync();
+                    _context.Players.Update(player);
+                    await _context.SaveChangesAsync();
 
-                return RedirectToAction("Details", "Home", new { countryId = player.CountryID });
+                    return RedirectToAction("Details", "Home", new { countryId = player.CountryID });
 
+                }
+
+                // Jeśli walidacja nie powiodła się, ponownie wyświetlamy formularz z błędami
+                return RedirectToAction("EditPlayer", player.PlayerID);
             }
-
-            // Jeśli walidacja nie powiodła się, ponownie wyświetlamy formularz z błędami
-            return RedirectToAction("EditPlayer", player.PlayerID);
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+                return View("Error");
+            }
         }
-
     }
 }

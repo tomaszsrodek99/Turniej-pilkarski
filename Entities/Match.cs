@@ -11,28 +11,30 @@ namespace Football.Entities
     {
         [Key]
         public int MatchID { get; set; }
-
+        [Required]
+        [Display(Name = "Data")]
         public DateTime? MatchDate { get; set; }
 
         [Required]
+        [Display(Name = "Gospodarze")]
         public int HomeId { get; set; }
-
+        [Display(Name = "Bramki gospodarzy")]
         public int? HomeScore { get; set; }
 
         [Required]
+        [Display(Name = "Goście")]
         public int VisitorId { get; set; }
-
+        [Display(Name = "Bramki gości")]
         public int? VisitorScore { get; set; }
 
         [Required]
         [StringLength(1)]
+        [Display(Name = "Szczebel rozgrywek")]
         public string PlayStage { get; set; }
 
-        [StringLength(1)]
-        public string PenaltyScore { get; set; }
-
+        [Display(Name = "Bramki gospodarzy - karne")]
         public int? HomeScoreP { get; set; }
-
+        [Display(Name = "Bramki gości - karne")]
         public int? VisitorScoreP { get; set; }
         public virtual Country Home { get; set; }
         public virtual Country Visitor { get; set; }

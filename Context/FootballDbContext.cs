@@ -17,12 +17,13 @@ namespace Football.Context
         {
 
         }
-        // Metoda pozwala na wskazanie i konfigurację źródła danych
-        // Przykład użycia był doskonale widoczny w poprzednim wpisie
+        // Metoda OnConfiguring jest wywoływana w momencie konfiguracji kontekstu bazy danych
+        // Jeśli już istnieje konfiguracja, to ta metoda nie zostanie wywołana
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
+                // Podajemy łańcuch połączenia do naszej bazy danych
                 optionsBuilder.UseSqlServer("Server=((localdb)\\MSSQLLocalDB;Database=Football;Trusted_Connection=True;",
                 x => x.MigrationsHistoryTable("__EFMigrationHistory", "Identity"));
 

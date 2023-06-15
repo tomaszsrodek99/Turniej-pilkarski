@@ -1,0 +1,52 @@
+﻿@model List<GroupTeamViewModel>
+@using Football.Models
+@{
+    ViewBag.Title = "Groups";
+}
+
+<h1 class="text-white text-center">Grupy</h1>
+<button type="button" class="btn btn-secondary" onclick="goBack()">Wstecz</button>
+<div class="row">
+    @foreach (var group in Model.GroupBy(t => t.Group).OrderBy(g => g.Key))
+    {
+        var number = 1;
+        <div class="col-md-6">
+            <h2 class="text-white">Grupa @group.Key</h2>
+            <div class="table-responsive text-white">
+                <table class="table table-bordered table-striped my-table">
+                    <thead>
+                        <tr>
+                            <th>Nr.</th>
+                            <th>Klub</th>
+                            <th>BZ:BS</th>
+                            <th>RM</th>
+                            <th>PKT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var team in group.OrderByDescending(t => t.Points))
+                        {
+                            <tr>
+                                @if (number == 1)
+                                {
+                                    <td style="background-color: green">@(number).</td>
+                                }
+                                else
+                                {
+                                    <td>@(number).</td>
+                                }
+                                <td>@team.CountryName</td>
+                                <td>@team.GoalsFor:@team.GoalsAgainst</td>
+                                <td>@team.MatchesPlayed</td>
+                                <td>@team.Points</td>
+                            </tr>
+                            number++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+

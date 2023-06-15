@@ -1,0 +1,100 @@
+﻿@model Football.Entities.Match
+@using System.ComponentModel.DataAnnotations;
+@using Football.Entities
+@{
+    ViewData["Title"] = "Create match";
+}
+
+<div class="text-center">
+    <h2 class="text-white">Dodaj mecz</h2>
+    <form asp-action="AddMatch" asp-controller="Match" method="post" class="my-form">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-6">
+                <label asp-for="PlayStage" class="control-label"></label>
+                <select id="playStage" class="form-control" asp-for="PlayStage">
+                    <option value="">Brak</option>
+                    @foreach (var stage in Enum.GetValues(typeof(Football.Entities.Stage)))
+                    {
+                        var stageMember = typeof(Football.Entities.Stage).GetMember(stage.ToString()).FirstOrDefault();
+                        var displayAttribute = stageMember?.GetCustomAttributes(typeof(DisplayAttribute), false).FirstOrDefault() as DisplayAttribute;
+                        var displayName = displayAttribute?.GetName() ?? stage.ToString();
+
+                        <option value="@stage">@displayName</option>
+                    }
+                </select>
+                <span asp-validation-for="PlayStage" class="text-danger"></span>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="MatchDate" class="control-label"></label>
+                    <input type="date" asp-for="MatchDate" class="form-control" />
+                    <span asp-validation-for="MatchDate" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-5">
+                <label asp-for="HomeId" class="control-label"></label>
+                <select asp-for="HomeId" class="form-control" onchange="GetCountryList('HomeId', 'VisitorId', '@Model.PlayStage', @Json.Serialize(ViewData["Countries"]))">
+                    <option value="">Gospodarze</option>
+                    @foreach (var country in ViewData["Countries"] as List<Country>)
+                    {
+                        <option value="@country.CountryID">@country.CountryName</option>
+                    }
+                </select>
+            </div>
+            <div class="col-2" style="padding-left: 0px; padding-right: 0px;">
+                <label class="control-label">Wynik</label>
+                <div class="row">
+                    <div class="col-1">
+                        <input type="number" asp-for="HomeScore" class="form-control" min="0" />
+                        <span asp-validation-for="HomeScore" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <input type="number" asp-for="VisitorScore" class="form-control" min="0" />
+                        <span asp-validation-for="VisitorScore" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <label asp-for="VisitorId" class="control-label"></label>
+                <select asp-for="VisitorId" class="form-control" onchange="GetCountryList('HomeId', 'VisitorId', '@Model.PlayStage', @Json.Serialize(ViewData["Countries"]))">
+                    <option value="">Goście</option>
+                    @foreach (var country in ViewData["Countries"] as List<Country>)
+                    {
+                        <option value="@country.CountryID">@country.CountryName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-5"></div>
+            <div class="col-2" style="padding-left: 0px; padding-right: 0px;">
+                <label class="control-label">Karne</label>
+                <div class="row">
+                    <div class="col-1">
+                        <input type="number" asp-for="HomeScoreP" class="form-control" min="0" />
+                        <span asp-validation-for="HomeScoreP" class="text-danger"></span>
+                    </div>
+                    <div class="col-1">
+                        <input type="number" asp-for="VisitorScoreP" class="form-control" min="0" />
+                        <span asp-validation-for="VisitorScoreP" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5"></div>
+        </div>
+        <div class="form-group">
+            <div class="btn-group">
+                <button style="margin-right: 15px" type="button" class="btn btn-secondary" onclick="goBack()">Wstecz</button>
+                <button type="submit" class="btn btn-primary">Dodaj</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

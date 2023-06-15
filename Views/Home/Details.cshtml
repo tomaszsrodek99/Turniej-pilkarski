@@ -1,5 +1,5 @@
 ﻿@model Football.Entities.Player
-@using Football.Models
+
 <h2 class="text-white">@ViewData["Title"]</h2>
 <button type="button" class="btn btn-secondary" onclick="goBack()">Wstecz</button>
 <a href="@Url.Action("AddPlayer", "Player", new { countryId = ViewData["CountryId"] })" id="addPlayerButton" class="btn btn-primary">Dodaj zawodnika</a>
@@ -23,7 +23,7 @@
             @foreach (var player in (List<Football.Entities.Player>)ViewData["Players"])
             {
                 <tr>
-                    <td>@(number)</td>
+                    <td>@(number).</td>
                     <td>@player.PlayerFullName</td>
                     <td>@player.Position</td>
                     <td>@player.Age</td>

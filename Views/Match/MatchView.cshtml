@@ -1,0 +1,54 @@
+﻿@model List<MatchViewModel>
+@using Football.Models
+@{
+    ViewData["Title"] = "Matches";
+}
+
+<h2 class="text-white text-center">Mecze</h2>
+<button type="button" class="btn btn-secondary" onclick="goBack()">Wstecz</button>
+<a href="@Url.Action("CreateMatch", "Match")" id="addMatchButton" class="btn btn-primary">Dodaj mecz</a>
+
+@if (Model.Any())
+{
+    <div class="table-responsive">
+        <table id="matchTable" class="table table-bordered table-striped my-table">
+            <thead>
+                <tr>
+                    <th>Nr.</th>
+                    <th>Data</th>
+                    <th>Gospodarze</th>
+                    <th>Goście</th>
+                    <th>Szczebel rozgrywek</th>
+                    <th>Wynik</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var match in Model)
+                {
+                    <tr>
+                        <td>@(Model.IndexOf(match) + 1)</td>
+                        <td>@match.MatchDate.ToShortDateString()</td>
+                        <td>@match.HomeId</td>
+                        <td>@match.VisitorId</td>
+                        <td>@match.PlayStage</td>
+                        <td>
+                            @if (match.HomeGoalsP != null && match.VisitorGoalsP != null)
+                            {
+                                <span>@match.HomeGoals:@match.VisitorGoals</span>
+                                <span>K(@match.HomeGoalsP:@match.VisitorGoalsP)</span>
+                            }
+                            else
+                            {
+                                <span>@match.HomeGoals:@match.VisitorGoals</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p class="text-white">Brak meczów do wyświetlenia.</p>
+}
