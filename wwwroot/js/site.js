@@ -77,19 +77,9 @@ function FindSelectedCountry(selectedHomeId) {
     return selectedCountry;
 }
 
-//Funkcja do usuwania opcji z select'a
-function RemoveOption(selectElement, optionValue) {
-    for (var i = 0; i < selectElement.options.length; i++) {
-        if (selectElement.options[i].value == optionValue) {
-            selectElement.remove(i);
-            break;
-        }
-    }
-}
-//Funkcja do aktualizowania select'a
-function UpdateOptions(countriesData, selectedId, selectId) {
-    CreateOptions(countriesData, selectId);
-    RemoveOption(document.getElementById(selectId), selectedId);
+// Funkcja do usuwania wszystkich opcji z selecta
+function RemoveAllOptions(selectElement) {
+    selectElement.innerHTML = "";
 }
 
 //Funkcja do zarządzania listą w odpowiedich selectach
@@ -100,41 +90,72 @@ function GetCountryList(countriesData, select) {
     var selectedCountry;
     var filteredCountries;
 
-    console.log("Wybrane HomeID: " + selectedHomeId);
-    console.log("Wybrane VisitorID: " + selectedVisitorId);
-
-    if (select === "playStage" && playStage !== "Grupa") {
+    /*if (select === "playStage" && playStage !== "Group") {
         UpdateOptions(countriesData, selectedHomeId, "createMatchVisitorId");
         UpdateOptions(countriesData, selectedVisitorId, "createMatchHomeId");
         return; // Zakończ funkcję po zaktualizowaniu listy dla innych niż Grupa
-    }
-
-    if (select == "createMatchHomeId") {
-        UpdateOptions(countriesData, selectedHomeId, "createMatchVisitorId");
-    } else {
-        UpdateOptions(countriesData, selectedVisitorId, "createMatchHomeId");
-    }
+    } else if (select !== "playStage") {
+        if (select == "createMatchHomeId") {
+            console.log("if 1");
+            var visitorSelect = document.getElementById("createMatchVisitorId");
+            var homeSelectedOption = visitorSelect.options[visitorSelect.selectedIndex];
+            UpdateOptions(countriesData, selectedHomeId, "createMatchVisitorId");
+            // Przywróć wybraną opcję
+            for (var i = 0; i < visitorSelect.options.length; i++) {
+                if (visitorSelect.options[i].value == homeSelectedOption.value) {
+                    visitorSelect.selectedIndex = i;
+                    break;
+                }
+            }
+        } else {
+            console.log("if 2");
+            var homeSelect = document.getElementById("createMatchHomeId");
+            var visitorSelectedOption = homeSelect.options[homeSelect.selectedIndex];
+            UpdateOptions(countriesData, selectedVisitorId, "createMatchHomeId");
+            // Przywróć wybraną opcję
+            for (var i = 0; i < homeSelect.options.length; i++) {
+                if (homeSelect.options[i].value == visitorSelectedOption.value) {
+                    homeSelect.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+    }*/
 
     // Czyszczenie listy państw w zależności od wyboru
-    if (playStage === "Grupa") {
-        if (select == "createMatchHomeId") {
-            selectedCountry = FindSelectedCountry(selectedHomeId);
-            filteredCountries = countriesData.filter(function (country) {
-                return country.grupa === selectedCountry.grupa && country.countryID != selectedHomeId;
-            });
-            CreateOptions(filteredCountries, "createMatchVisitorId");
-        } else {
-            selectedCountry = FindSelectedCountry(selectedVisitorId);
-            filteredCountries = countriesData.filter(function (country) {
-                return country.grupa === selectedCountry.grupa && country.countryID != selectedVisitorId;
-            });
-            CreateOptions(filteredCountries, "createMatchHomeId");
+    if (select == "createMatchHomeId") {
+        selectedCountry = FindSelectedCountry(selectedHomeId);
+        filteredCountries = countriesData.filter(function (country) {
+            return country.group === selectedCountry.group && country.countryID != selectedCountry.countryID;
+        });
+
+        var visitorSelect = document.getElementById("createMatchVisitorId");
+        var homeSelectedOption = visitorSelect.options[visitorSelect.selectedIndex];
+        RemoveAllOptions(visitorSelect);
+
+        CreateOptions(filteredCountries, "createMatchVisitorId");
+        // Przywróć wybraną opcję
+        for (var i = 0; i < visitorSelect.options.length; i++) {
+            if (visitorSelect.options[i].value == homeSelectedOption.value) {
+                visitorSelect.selectedIndex = i;
+            }
+        }
+
+    } else {
+        selectedCountry = FindSelectedCountry(selectedVisitorId);
+        filteredCountries = countriesData.filter(function (country) {
+            return country.group === selectedCountry.group && country.countryID != selectedCountry.countryID;
+        });
+
+        var homeSelect = document.getElementById("createMatchHomeId");
+        var visitorSelectedOption = homeSelect.options[homeSelect.selectedIndex];
+        RemoveAllOptions(homeSelect);
+
+        CreateOptions(filteredCountries, "createMatchHomeId");
+        if (homeSelect.options[i].value == visitorSelectedOption.value) {
+            homeSelect.selectedIndex = i;
         }
     }
-    //console.log("Wybrane HomeID: " + selectedHomeId);
-    //console.log("Wybrane VisitorID: " + selectedVisitorId);
-    //console.log("playStage: ", playStage);
-    //console.log("countriesData: ", countriesData);
 }
 
 

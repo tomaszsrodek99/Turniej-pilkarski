@@ -14,7 +14,7 @@ namespace Football.Entities
 
         [Required(ErrorMessage = "To pole jest wymagane.")]
         [Display(Name = "Trener")]
-        public int? CoachID { get; set; }
+        public int CoachID { get; set; }
 
         [StringLength(35, MinimumLength = 4, ErrorMessage = "Długość musi wynosić między 4 a 35 liter.")]
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$", ErrorMessage = "Pole może zawierać tylko litery. Nazwa musi rozpoczynać się wielką literą.")]
@@ -22,8 +22,8 @@ namespace Football.Entities
         [Display(Name = "Nazwa drużyny")]
         public string CountryName { get; set; }
 
-        [StringLength(1)]
-        public string Grupa { get; set; }
+        [Display(Name = "Grupa")]
+        public string? Group { get; set; }
 
         [ForeignKey("CoachID")]
         public virtual Coach Coach { get; set; }

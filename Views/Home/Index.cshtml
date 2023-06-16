@@ -23,7 +23,7 @@
                 <td>@(index + 1).</td>
                 <td>@team.CountryName</td>
                 <td>@team.Coach.Firstname @team.Coach.Lastname</td>
-                <td>@team.Grupa</td>
+                <td>@team.Group</td>
                 <td>
                     @Html.ActionLink("Szczegóły", "Details", new { countryId = team.CountryID }) |
                     @Html.ActionLink("Edytuj", "EditClub", "Country", new { countryId = team.CountryID }, null) |

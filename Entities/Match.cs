@@ -11,24 +11,16 @@ namespace Football.Entities
     {
         [Key]
         public int MatchID { get; set; }
-        [Required]
         [Display(Name = "Data")]
         public DateTime? MatchDate { get; set; }
-
-        [Required]
         [Display(Name = "Gospodarze")]
         public int HomeId { get; set; }
         [Display(Name = "Bramki gospodarzy")]
         public int? HomeScore { get; set; }
-
-        [Required]
         [Display(Name = "Goście")]
         public int VisitorId { get; set; }
         [Display(Name = "Bramki gości")]
         public int? VisitorScore { get; set; }
-
-        [Required]
-        [StringLength(1)]
         [Display(Name = "Szczebel rozgrywek")]
         public string PlayStage { get; set; }
 
@@ -42,7 +34,10 @@ namespace Football.Entities
 
     public enum Stage
     {
-        Grupa,
+        [Display(Name = "Brak")]
+        NotAssigned,
+        [Display(Name = "Grupa")]
+        Group,
         [Display(Name = "1/8")]
         OneEighth,
         [Display(Name = "Ćwierćfinał")]

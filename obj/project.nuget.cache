@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "REqYm3pv+kdZm4x9sJmG0BTsiRJqJX7AM4xFs7EU6SXlt00hSDlvjJ92xz5b+njQv3ivBDtqu75sGWUmYyDzQg==",
+  "dgSpecHash": "apOZKCgggb5xfjrBVyg8nbuicY/bM+zw2KFhqcmzLQn1FCYgQARIWmHo8Nj5PyzxZ/HncC5R1ZUz54LhiLbFCw==",
   "success": true,
   "projectFilePath": "F:\\Programowanie\\Aplikacja webowa - Football\\Aplikacja webowa - Football\\Aplikacja webowa - Football.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Tomasz\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\Tomasz\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\Tomasz\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\Tomasz\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Tomasz\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Tomasz\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

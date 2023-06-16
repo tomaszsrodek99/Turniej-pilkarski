@@ -153,3 +153,7 @@ F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Deb
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Match\MatchView.cshtml.g.cs
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Match\CreateMatchForm.cshtml.g.cs
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Match\CreateMatchForm - kopiować.cshtml.g.cs
+F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\bin\Debug\net5.0\FluentValidation.dll
+F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Aplikacja webowa - Football.MvcApplicationPartsAssemblyInfo.cs

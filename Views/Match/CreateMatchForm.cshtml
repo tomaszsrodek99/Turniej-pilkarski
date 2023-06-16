@@ -3,7 +3,6 @@
 @using Football.Entities
 @{
     ViewData["Title"] = "Create match";
-    List<Country> countryList = new List<Country>();
 }
 <script>
     var countriesData = @Html.Raw(Json.Serialize(ViewBag.Countries));
@@ -17,16 +16,8 @@
         <div class="form-group row">
             <div class="col-6">
                 <label asp-for="PlayStage" class="control-label"></label>
-                <select id="playStage" class="form-control" asp-for="PlayStage" onchange="GetCountryList(countriesData, 'playStage')">
-                    <option value="" disabled selected>Brak</option>
-                    @foreach (var stage in Enum.GetValues(typeof(Football.Entities.Stage)))
-                    {
-                        var stageMember = typeof(Football.Entities.Stage).GetMember(stage.ToString()).FirstOrDefault();
-                        var displayAttribute = stageMember?.GetCustomAttributes(typeof(DisplayAttribute), false).FirstOrDefault() as DisplayAttribute;
-                        var displayName = displayAttribute?.GetName() ?? stage.ToString();
-
-                        <option value="@stage">@displayName</option>
-                    }
+                <select id="playStage" class="form-control" asp-for="PlayStage">
+                        <option value="@Football.Entities.Stage.Group">Grupa</option>
                 </select>
                 <span asp-validation-for="PlayStage" class="text-danger"></span>
             </div>
@@ -39,32 +30,31 @@
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-5">
-                <label asp-for="HomeId" class="control-label"></label>
-
-                <select id="createMatchHomeId" class="form-control" onchange="GetCountryList(countriesData, 'createMatchHomeId')">
+            <div class="col-4">
+                <label class="control-label" for="createMatchHomeId">Gospodarze</label>
+                <select id="createMatchHomeId" asp-for="HomeId" class="form-control" onchange="GetCountryList(countriesData, 'createMatchHomeId')">
                     <option value="" disabled selected>Wybierz gospodarzy</option>
                     @foreach (var country in ViewBag.Countries as List<Country>)
                     {
-                        countryList.Add(country);
                         <option value="@country.CountryID">@country.CountryName</option>
                     }
                 </select>
+                <span asp-validation-for="HomeId" class="text-danger"></span>
             </div>
-            <div class="col-2" style="padding-left: 0px; padding-right: 0px;">
-                <label class="control-label">Wynik</label>
+            <div class="col-4">
+                <label class="control-label text-center" style="margin-right: 10px;">Wynik</label>
                 <div class="row">
-                    <div class="col-1">
+                    <div class="offset-1 col-1" style="margin-right: 40px;margin-left: -10px;">
                         <input type="number" asp-for="HomeScore" class="form-control" min="0" />
                         <span asp-validation-for="HomeScore" class="text-danger"></span>
                     </div>
-                    <div class="col-1">
+                    <div class="offset-1 col-1">
                         <input type="number" asp-for="VisitorScore" class="form-control" min="0" />
                         <span asp-validation-for="VisitorScore" class="text-danger"></span>
                     </div>
                 </div>
             </div>
-            <div class="col-5">
+            <div class="col-4">
                 <label asp-for="VisitorId" class="control-label"></label>
                 <select id="createMatchVisitorId" asp-for="VisitorId" class="form-control" onchange="GetCountryList(countriesData, 'createMatchVisitorId')">
                     <option value="" disabled selected>Wybierz gości</option>
@@ -73,20 +63,22 @@
                         <option value="@country.CountryID">@country.CountryName</option>
                     }
                 </select>
+                <span asp-validation-for="VisitorId" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-4 offset-4" style="padding-left: 0px; padding-right: 0px;">
-                <label class="control-label">Karne</label>
+            <div class="col-4 offset-4">
+                <label class="control-label" style="margin-right: 10px;">Karne</label>
                 <div class="row">
-                    <div class="col-2">
-                        <input type="number" asp-for="HomeScoreP" class="form-control" min="0" />
+                    <div class="offset-1 col-1" style="margin-right: 15px;margin-left: 5px;">
+                        <input type="number" asp-for="HomeScoreP" class="form-control" min="0" value="0" />
                         <span asp-validation-for="HomeScoreP" class="text-danger"></span>
                     </div>
-                    <div class="col-2">
-                        <input type="number" asp-for="VisitorScoreP" class="form-control" min="0" />
+                    <div class="offset-1 col-1">
+                        <input type="number" asp-for="VisitorScoreP" class="form-control" min="0" value="0" />
                         <span asp-validation-for="VisitorScoreP" class="text-danger"></span>
                     </div>
+
                 </div>
             </div>
         </div>

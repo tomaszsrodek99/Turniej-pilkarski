@@ -63,11 +63,11 @@ namespace Football.Controllers
             try
             {
                 //Pobierz wszystkie mecze na szczeblu grupowym
-                var matchList = await _context.Matches.Where(x => x.PlayStage == "G").ToListAsync();
+                var matchList = await _context.Matches.Where(x => x.PlayStage == "Group").ToListAsync();
                 //Utwórz listę naszych nowych modeli dla widoku
                 var groupTeams = new List<GroupTeamViewModel>();
                 //Pobierz drużyny, które rozegrały już mecze jako gospodarze lub goście
-                var teams = await _context.Countries.Where(x=>x.Grupa != "-").ToListAsync();
+                var teams = await _context.Countries.ToListAsync();
                 //Iteruj przez wszystkie drużyny, przypisująć odpowiednie dane do konkretnych pól nowego modelu
                 foreach (var team in teams)
                 {
@@ -79,7 +79,7 @@ namespace Football.Controllers
                         GoalsFor = 0,
                         MatchesPlayed = 0,
                         Points = 0,
-                        Group = team.Grupa.ToString()
+                        Group = team.Group.ToString()
                     };
                     //Jeżeli lista nie jest pusta
                     if(matchList.Any())

@@ -38,7 +38,7 @@ namespace Football.Controllers
                         // Jeśli trener już istnieje, dodajemy błąd walidacji dla pól imienia i nazwiska
                         ModelState.AddModelError("Firstname", "Trener o podanym imieniu i nazwisku już istnieje.");
                         ModelState.AddModelError("Lastname", "Trener o podanym imieniu i nazwisku już istnieje.");
-                        return View("CreateClubForm");
+                        return View("CreateCoachForm");
                     }
 
                     _context.Coaches.Add(coach);
@@ -47,7 +47,7 @@ namespace Football.Controllers
                     // Pobieramy nowo dodanego trenera i przekazujemy go do akcji, w której skończmym tworzyć klub
                     var newCoach = await _context.Coaches.FirstOrDefaultAsync(x => x.Lastname == coach.Lastname && x.Firstname == coach.Firstname);
 
-                    return RedirectToAction("AddTeam", newCoach);
+                    return RedirectToAction("AddTeam", coach);
                 }
 
                 return View("CreateClubForm");
@@ -94,6 +94,9 @@ namespace Football.Controllers
             }
             catch (Exception ex)
             {
+                var coach = await _context.Coaches.FindAsync(coachId);
+                _context.Coaches.Remove(coach);
+                await _context.SaveChangesAsync();
                 ViewBag.ErrorMessage = ex.Message;
                 return View("Error");
             }
@@ -156,7 +159,7 @@ namespace Football.Controllers
                         }
 
                         existingCountry.CountryName = country.CountryName;
-                        existingCountry.Grupa = country.Grupa;
+                        existingCountry.Group = country.Group;
 
                         // Pobierz trenera o podanym coachId
                         var coach = await _context.Coaches.FindAsync(country.CoachID);
@@ -176,7 +179,7 @@ namespace Football.Controllers
 
                         await _context.SaveChangesAsync();
 
-                        return RedirectToAction("Details", "Home", country.CountryID);
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 return View("EditClubForm", country.CountryID);
