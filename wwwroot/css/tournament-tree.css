@@ -1,0 +1,43 @@
+﻿.tournament-tree {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.level {
+    margin-bottom: 20px;
+}
+
+.match {
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.team-container {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+}
+.team {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.score {
+    width: 20%;
+    flex: 0 0 60px;
+    text-align: center;
+}

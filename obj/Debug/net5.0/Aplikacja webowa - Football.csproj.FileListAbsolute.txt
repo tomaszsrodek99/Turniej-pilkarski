@@ -157,3 +157,4 @@ F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\bin\Deb
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
 F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Aplikacja webowa - Football.MvcApplicationPartsAssemblyInfo.cs
+F:\Programowanie\Aplikacja webowa - Football\Aplikacja webowa - Football\obj\Debug\net5.0\Razor\Views\Match\TournamentTree.cshtml.g.cs

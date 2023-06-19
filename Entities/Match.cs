@@ -38,8 +38,6 @@ namespace Football.Entities
         NotAssigned,
         [Display(Name = "Grupa")]
         Group,
-        [Display(Name = "1/8")]
-        OneEighth,
         [Display(Name = "Ćwierćfinał")]
         QuarterFinal,
         [Display(Name = "Półfinał")]

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/css/formStyle.css" />
     <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/css/tournament-tree.css" />
     <script src="~/js/site.js"></script>
 </head>
 <body>
@@ -32,7 +33,7 @@
                     <a class="@((ViewContext.RouteData.Values["controller"] as string == "Match" && ViewContext.RouteData.Values["action"] as string != "TournamentTree") ? "active" : "") nav-link" href="/Match/MatchesView">Mecze</a>
                 </li>
                 <li class="nav-item">
-                    <a class="@((ViewContext.RouteData.Values["controller"] as string == "Match" && ViewContext.RouteData.Values["action"] as string == "TournamentTree") ? "active" : "") nav-link disable" href="/Match/TournamentView">Drabinka turniejowa</a>
+                    <a class="@((ViewContext.RouteData.Values["controller"] as string == "Match" && ViewContext.RouteData.Values["action"] as string == "TournamentTree") ? "active" : "") nav-link disable" href="/Match/TournamentTree">Drabinka turniejowa</a>
                 </li>
                 <li class="nav-item">
                     <a class="@((ViewContext.RouteData.Values["controller"] as string == "Player" && ViewContext.RouteData.Values["action"] as string == "-") ? "active" : "") nav-link disable" href="">Strzelcy</a>

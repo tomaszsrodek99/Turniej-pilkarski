@@ -123,40 +123,77 @@ function GetCountryList(countriesData, select) {
     }*/
 
     // Czyszczenie listy państw w zależności od wyboru
-    if (select == "createMatchHomeId") {
-        selectedCountry = FindSelectedCountry(selectedHomeId);
-        filteredCountries = countriesData.filter(function (country) {
-            return country.group === selectedCountry.group && country.countryID != selectedCountry.countryID;
-        });
+    if (playStage === "Group") {
+        if (select == "createMatchHomeId") {
+            selectedCountry = FindSelectedCountry(selectedHomeId);
+            filteredCountries = countriesData.filter(function (country) {
+                return country.group === selectedCountry.group && country.countryID != selectedCountry.countryID;
+            });
 
-        var visitorSelect = document.getElementById("createMatchVisitorId");
-        var homeSelectedOption = visitorSelect.options[visitorSelect.selectedIndex];
-        RemoveAllOptions(visitorSelect);
+            var visitorSelect = document.getElementById("createMatchVisitorId");
+            var homeSelectedOption = visitorSelect.options[visitorSelect.selectedIndex];
+            RemoveAllOptions(visitorSelect);
 
-        CreateOptions(filteredCountries, "createMatchVisitorId");
-        // Przywróć wybraną opcję
-        for (var i = 0; i < visitorSelect.options.length; i++) {
-            if (visitorSelect.options[i].value == homeSelectedOption.value) {
-                visitorSelect.selectedIndex = i;
+            CreateOptions(filteredCountries, "createMatchVisitorId");
+            // Przywróć wybraną opcję
+            for (var i = 0; i < visitorSelect.options.length; i++) {
+                if (visitorSelect.options[i].value == homeSelectedOption.value) {
+                    visitorSelect.selectedIndex = i;
+                }
+            }
+
+        } else {
+            selectedCountry = FindSelectedCountry(selectedVisitorId);
+            filteredCountries = countriesData.filter(function (country) {
+                return country.group === selectedCountry.group && country.countryID != selectedCountry.countryID;
+            });
+
+            var homeSelect = document.getElementById("createMatchHomeId");
+            var visitorSelectedOption = homeSelect.options[homeSelect.selectedIndex];
+            RemoveAllOptions(homeSelect);
+
+            CreateOptions(filteredCountries, "createMatchHomeId");
+            if (homeSelect.options[i].value == visitorSelectedOption.value) {
+                homeSelect.selectedIndex = i;
             }
         }
-
     } else {
-        selectedCountry = FindSelectedCountry(selectedVisitorId);
-        filteredCountries = countriesData.filter(function (country) {
-            return country.group === selectedCountry.group && country.countryID != selectedCountry.countryID;
-        });
+        if (select == "createMatchHomeId") {
+            selectedCountry = FindSelectedCountry(selectedHomeId);
+            filteredCountries = countriesData.filter(function (country) {
+                return country.countryID != selectedCountry.countryID;
+            });
 
-        var homeSelect = document.getElementById("createMatchHomeId");
-        var visitorSelectedOption = homeSelect.options[homeSelect.selectedIndex];
-        RemoveAllOptions(homeSelect);
+            var visitorSelect = document.getElementById("createMatchVisitorId");
+            var homeSelectedOption = visitorSelect.options[visitorSelect.selectedIndex];
+            RemoveAllOptions(visitorSelect);
 
-        CreateOptions(filteredCountries, "createMatchHomeId");
-        if (homeSelect.options[i].value == visitorSelectedOption.value) {
-            homeSelect.selectedIndex = i;
+            CreateOptions(filteredCountries, "createMatchVisitorId");
+            // Przywróć wybraną opcję
+            for (var i = 0; i < visitorSelect.options.length; i++) {
+                if (visitorSelect.options[i].value == homeSelectedOption.value) {
+                    visitorSelect.selectedIndex = i;
+                }
+            }
+
+        } else {
+            selectedCountry = FindSelectedCountry(selectedVisitorId);
+            filteredCountries = countriesData.filter(function (country) {
+                return country.countryID != selectedCountry.countryID;
+            });
+
+            var homeSelect = document.getElementById("createMatchHomeId");
+            var visitorSelectedOption = homeSelect.options[homeSelect.selectedIndex];
+            RemoveAllOptions(homeSelect);
+
+            CreateOptions(filteredCountries, "createMatchHomeId");
+            if (homeSelect.options[i].value == visitorSelectedOption.value) {
+                homeSelect.selectedIndex = i;
+            }
         }
     }
 }
+
 
 
 

@@ -6,8 +6,10 @@
 
 <h2 class="text-white text-center">Mecze</h2>
 <button type="button" class="btn btn-secondary" onclick="goBack()">Wstecz</button>
-<a href="@Url.Action("CreateMatch", "Match")" id="addMatchButton" class="btn btn-primary">Dodaj mecz grupowy</a>
-<a href="@Url.Action("CreateTournamentMatch", "Match")" id="addMatchButton" class="btn btn-primary">Dodaj mecz pucharowy</a>
+<a href="@Url.Action("CreateMatch", "Match")?stage=Group" id="addMatchButton" class="btn btn-primary">Dodaj mecz</a>
+<a href="@Url.Action("CreateTournamentMatch", "Match")?stage=QuarterFinal" id="addMatchButton" class="btn btn-primary">Dodaj mecz ćwierćfinałowy</a>
+<a href="@Url.Action("CreateTournamentMatch", "Match")?stage=SemiFinal" id="addMatchButton" class="btn btn-primary">Dodaj mecz półfinałowy</a>
+<a href="@Url.Action("CreateTournamentMatch", "Match")?stage=Final" id="addMatchButton" class="btn btn-primary">Finał</a>
 
 @if (Model.Any())
 {
@@ -27,27 +29,27 @@
             <tbody>
                 @foreach (var match in Model)
                 {
-                <tr>
-                    <td>@(Model.IndexOf(match) + 1)</td>
-                    <td>@match.MatchDate.ToShortDateString()</td>
-                    <td>@match.HomeId</td>
-                    <td>@match.VisitorId</td>
-                    <td>@match.PlayStage</td>
-                    <td>
-                        @if (match.HomeGoalsP != null && match.VisitorGoalsP != null)
-                        {
-                            <span>@match.HomeGoals:@match.VisitorGoals</span>
-                            <span>K(@match.HomeGoalsP:@match.VisitorGoalsP)</span>
-                        }
-                        else
-                        {
-                            <span>@match.HomeGoals:@match.VisitorGoals</span>
-                        }
-                    </td>
-                    <td>
-                        @Html.ActionLink("Usuń", "DeleteMatch", "Match", new { matchId = match.MatchId }, new { onclick = "return confirm('Czy na pewno chcesz usunąć mecz?');" })
-                    </td>
-                </tr>
+                    <tr>
+                        <td>@(Model.IndexOf(match) + 1)</td>
+                        <td>@match.MatchDate.ToShortDateString()</td>
+                        <td>@match.HomeId</td>
+                        <td>@match.VisitorId</td>
+                        <td>@match.PlayStage</td>
+                        <td>
+                            @if (match.HomeGoalsP != null && match.VisitorGoalsP != null)
+                            {
+                                <span>@match.HomeGoals:@match.VisitorGoals</span>
+                                <span>K(@match.HomeGoalsP:@match.VisitorGoalsP)</span>
+                            }
+                            else
+                            {
+                                <span>@match.HomeGoals:@match.VisitorGoals</span>
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink("Usuń", "DeleteMatch", "Match", new { matchId = match.MatchId }, new { onclick = "return confirm('Czy na pewno chcesz usunąć mecz?');" })
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
